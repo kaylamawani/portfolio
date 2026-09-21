@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayla Mawani | Portfolio</title>
+  <style>
+    /* CSS Variables & Global Styles */
+    :root {
+      --bg-color: #fcfcfc;
+      --card-bg: #ffffff;
+      --text-main: #2b2b2b;
+      --text-muted: #5e646e;
+      --accent-color: #0f4c81;
+      --accent-hover: #0a355c;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --transition-speed: 0.25s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      padding-top: 70px;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color var(--transition-speed) ease;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-main);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent-color);
+      color: #ffffff !important;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    }
+
+    .btn:hover, .btn:focus {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn:focus-visible, a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 3px;
+    }
+
+    /* Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .brand-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 6rem 0 4rem 0;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero-name {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -1px;
+    }
+
+    .hero-headline {
+      font-size: 1.35rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-bio {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Cards Layout */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Education & Experience */
+    .timeline-item {
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+    }
+
+    .item-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .item-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .item-subtitle {
+      color: var(--accent-color);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .item-description {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .item-description li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Leadership Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .gallery-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .gallery-img-container {
+      width: 100%;
+      height: 220px;
+      background-color: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .gallery-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-caption {
+      padding: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Skills */
+    .skills-category {
+      margin-bottom: 1.5rem;
+    }
+
+    .skills-category-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background-color: #f0f4f8;
+      color: var(--accent-color);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(15, 76, 129, 0.15);
+    }
+
+    /* Projects */
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-body {
+      margin-bottom: 1.25rem;
+    }
+
+    .project-skills {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      background: #eef2f6;
+      color: var(--text-muted);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* Contact & Footer */
+    .contact-container {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-text {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+    }
+
+    /* Keyframe Animations (Respecting Reduced Motion) */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    /* Mobile Responsive Header */
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 0.85rem;
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+      .hero-name {
+        font-size: 2.25rem;
+      }
+      .hero-headline {
+        font-size: 1.15rem;
+      }
+      .item-header {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="container nav-container">
+      <a href="#intro" class="brand-logo" aria-label="Kayla Mawani Home">Kayla Mawani</a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Résumé</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Introduction / Hero Section -->
+    <section id="intro" class="hero fade-in">
+      <div class="container hero-content">
+        <h1 class="hero-name">Kayla Mawani</h1>
+        <p class="hero-headline">Business Administration Student | Marketing, Brand Management &amp; Product Management</p>
+        <p class="hero-bio">
+          Student at California Polytechnic State University - San Luis Obispo specializing in marketing, brand design, visual strategy, and campaign execution. Passionate about driving cohesive brand identity and product strategy.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn">View Projects</a>
+          <a href="#resume" class="btn" style="background-color: transparent; color: var(--accent-color) !important; border: 1px solid var(--accent-color);">View Résumé</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p style="color: var(--text-muted); max-width: 850px; font-size: 1.05rem;">
+          I am a Business Administration undergraduate with a minor in Graphic Communication at Cal Poly San Luis Obispo. My experience spans digital design, marketing operations, brand strategy, and cross-functional leadership across student organizations, athletics, and professional roles. I combine visual communications skills—including Adobe Creative Cloud—with structured execution and team leadership to develop impactful brand collateral and support product strategy initiatives.
+        </p>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="card" style="max-width: 850px;">
+          <div class="item-header">
+            <h3 class="item-title">California Polytechnic State University - San Luis Obispo</h3>
+            <span class="item-date">Sept. 2025 - Jun. 2029</span>
+          </div>
+          <p class="item-subtitle">B.A./B.S. in Business Administration, Minor in Graphic Communication</p>
+          
+          <div style="margin-top: 1.5rem;" class="item-header">
+            <h3 class="item-title" style="font-size: 1rem;">Dougherty Valley High School</h3>
+            <span class="item-date">Aug. 2021 - Jun. 2025</span>
+          </div>
+          <p class="card-meta">Awards: Scholar Athlete, AP Scholar, AP Scholar with Distinction</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div style="max-width: 850px; display: flex; flex-direction: column; gap: 2rem;">
+          
+          <div class="card timeline-item">
+            <div class="item-header">
+              <h3 class="item-title">Server</h3>
+              <span class="item-date">May 2025 - Sept. 2026</span>
+            </div>
+            <p class="item-subtitle">Sipeos Restaurant and Bar | Walnut Creek, CA</p>
+            <ul class="item-description">
+              <li>Managed multiple tables in a fast-paced environment while collaborating with coworkers to resolve issues efficiently.</li>
+              <li>Accommodated special requests relating to dietary restrictions through a deep understanding of preparation methods.</li>
+              <li>Built genuine connections with guests that encouraged loyalty and repeat visits.</li>
+            </ul>
+          </div>
+
+          <div class="card timeline-item">
+            <div class="item-header">
+              <h3 class="item-title">Lifeguard I</h3>
+              <span class="item-date">Sum. 2023 - Sum. 2025</span>
+            </div>
+            <p class="item-subtitle">City of San Ramon | San Ramon, CA</p>
+            <ul class="item-description">
+              <li>Provided reliable customer service by assisting guests, answering questions, and handling conflicts professionally.</li>
+              <li>Attended 25+ hours/summer in weekly staff training and passed 7 full facility audits.</li>
+              <li>Demonstrated quick response times, strong decision making, and leadership under pressure.</li>
+            </ul>
+          </div>
+
+          <div class="card timeline-item">
+            <div class="item-header">
+              <h3 class="item-title">Soccer Coach</h3>
+              <span class="item-date">Jan. - May 2025</span>
+            </div>
+            <p class="item-subtitle">San Ramon Futbol Club | San Ramon, CA</p>
+            <ul class="item-description">
+              <li>Coached two teams of young soccer players (ages 5-12), teaching fundamental skills, teamwork, and sportsmanship.</li>
+              <li>Fostered a high energy and inclusive environment that encouraged player confidence and personal growth.</li>
+              <li>Designed and led structured practice sessions four times per week to prepare players for the next level.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership Experience & Photo Gallery Section -->
+    <section id="leadership" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Leadership Experience</h2>
+        
+        <div style="max-width: 850px; margin-bottom: 2rem;">
+          <div class="card">
+            <div class="item-header">
+              <h3 class="item-title">Marketing Committee Member</h3>
+              <span class="item-date">Oct. 2025 - Present</span>
+            </div>
+            <p class="item-subtitle">Alpha Kappa Psi Business Fraternity | San Luis Obispo, CA</p>
+            <ul class="item-description" style="margin-bottom: 1rem;">
+              <li>Designed and sold custom T-shirts while coordinating production, pricing, and distribution.</li>
+              <li>Drew and finalized a cohesive pledge class logo adopted across social media platforms and deliverables.</li>
+              <li>Oversaw all visual aspects of deliverables and edited members' presentations to improve consistency.</li>
+            </ul>
+          </div>
+
+          <div class="card" style="margin-top: 1.5rem;">
+            <div class="item-header">
+              <h3 class="item-title">Athletics Committee Member</h3>
+              <span class="item-date">Aug. 2021 - Jun. 2025</span>
+            </div>
+            <p class="item-subtitle">High School Leadership | San Ramon, CA</p>
+            <ul class="item-description">
+              <li>Created a program with organized events to boost student and community participation for underrepresented sports.</li>
+              <li>Chosen to represent the student body at the Sportsmanship and Women in Leadership Conferences.</li>
+              <li>Highlighted player achievements through giveaways and organized monthly captain meetings to hear athlete concerns.</li>
+            </ul>
+          </div>
+
+          <div class="card" style="margin-top: 1.5rem;">
+            <div class="item-header">
+              <h3 class="item-title">Social Media Manager</h3>
+              <span class="item-date">Aug. 2021 - Jun. 2025</span>
+            </div>
+            <p class="item-subtitle">Dougherty Valley High School | San Ramon, CA</p>
+            <ul class="item-description">
+              <li>Managed social media accounts for Athletics, Women’s Soccer, and the athletic Student Section.</li>
+              <li>Increased audience engagement and strengthened school spirit through consistent, creative content.</li>
+              <li>Created and scheduled posts, coordinated with teams, and tracked analytics to optimize reach and impact.</li>
+            </ul>
+          </div>
+
+          <div class="card" style="margin-top: 1.5rem;">
+            <div class="item-header">
+              <h3 class="item-title">President (c/o 2025 San Ramon Girls Group) &amp; Volunteer</h3>
+              <span class="item-date">Aug. 2019 - Jun. 2025</span>
+            </div>
+            <p class="item-subtitle">Lions Heart Service | San Ramon, CA</p>
+            <ul class="item-description">
+              <li>Served as President of the c/o 2025 San Ramon Girls group; organized and led meetings and volunteer sessions.</li>
+              <li>Earned President’s Volunteer Service Award (Gold and Bronze) for volunteer impact and hours contributed.</li>
+              <li>Participated in park cleanups, feeding the homeless, harvesting fruit for food banks, and organizing donations for international aid.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Leadership Photo Gallery -->
+        <!-- EDITING INSTRUCTIONS FOR GALLERY: 
+             To update photos, place images in an 'images/' directory and set src="images/filename.jpg". 
+             You can add or remove gallery-card blocks as needed. -->
+        <h3 style="font-size: 1.25rem; margin-top: 2rem; margin-bottom: 1rem;">Leadership &amp; Campus Activities Gallery</h3>
+        <div class="gallery-grid">
+          
+          <div class="gallery-card">
+            <div class="gallery-img-container">
+              <img src="images/leadership-1.jpg" alt="Kayla Mawani participating in Alpha Kappa Psi business fraternity activity" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\"padding:1rem; text-align:center; color:#888;\">[ Image Placeholder: images/leadership-1.jpg ]</div>';">
+            </div>
+            <div class="gallery-caption">
+              <strong>Alpha Kappa Psi Business Fraternity</strong><br>
+              Collaborating with fellow members on strategic fraternity events and professional development initiatives.
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-img-container">
+              <img src="images/leadership-2.jpg" alt="Alpha Kappa Psi group photo at campus location" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\"padding:1rem; text-align:center; color:#888;\">[ Image Placeholder: images/leadership-2.jpg ]</div>';">
+            </div>
+            <div class="gallery-caption">
+              <strong>Marketing &amp; Leadership Team</strong><br>
+              Working alongside team members to coordinate marketing campaigns and visual deliverables.
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-img-container">
+              <!-- Placeholder slot for a 3rd photo -->
+              <img src="images/leadership-3.jpg" alt="Campus Leadership and Event Coordination" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\"padding:1rem; text-align:center; color:#888;\">[ Image Placeholder: images/leadership-3.jpg ]</div>';">
+            </div>
+            <div class="gallery-caption">
+              <strong>[ADD LEADERSHIP ROLE TITLE]</strong><br>
+              [ADD LEADERSHIP ROLE DESCRIPTION &amp; CAPTION]
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Skills &amp; Capabilities</h2>
+        <div class="card-grid">
+          
+          <div class="card skills-category">
+            <h3 class="skills-category-title">Marketing, Research &amp; Brand Strategy</h3>
+            <div class="skills-tags">
+              <span class="tag">Brand Strategy</span>
+              <span class="tag">Social Media Management</span>
+              <span class="tag">Content Scheduling</span>
+              <span class="tag">Audience Analytics</span>
+              <span class="tag">Campaign Planning</span>
+            </div>
+          </div>
+
+          <div class="card skills-category">
+            <h3 class="skills-category-title">Design &amp; Visual Communication</h3>
+            <div class="skills-tags">
+              <span class="tag">Graphic Design</span>
+              <span class="tag">Visual Layout &amp; Typography</span>
+              <span class="tag">Logo Design</span>
+              <span class="tag">Print Formatting</span>
+              <span class="tag">Apparel &amp; Merchandise Design</span>
+            </div>
+          </div>
+
+          <div class="card skills-category">
+            <h3 class="skills-category-title">Project &amp; Product Leadership</h3>
+            <div class="skills-tags">
+              <span class="tag">Cross-Functional Collaboration</span>
+              <span class="tag">Event Coordination</span>
+              <span class="tag">Merchandise Production &amp; Distribution</span>
+              <span class="tag">Team Leadership</span>
+              <span class="tag">Problem Solving</span>
+            </div>
+          </div>
+
+          <div class="card skills-category">
+            <h3 class="skills-category-title">Software &amp; Technical Tools</h3>
+            <div class="skills-tags">
+              <span class="tag">Adobe Photoshop</span>
+              <span class="tag">Adobe Illustrator</span>
+              <span class="tag">Adobe InDesign</span>
+              <span class="tag">Canva</span>
+              <span class="tag">Microsoft Word</span>
+              <span class="tag">Microsoft Excel</span>
+              <span class="tag">Microsoft PowerPoint</span>
+              <span class="tag">Microsoft Outlook</span>
+              <span class="tag">MacOS</span>
+            </div>
+          </div>
+
+          <div class="card skills-category">
+            <h3 class="skills-category-title">Certifications &amp; Safety</h3>
+            <div class="skills-tags">
+              <span class="tag">American Red Cross Lifeguarding</span>
+              <span class="tag">CPR/AED (Pro Rescuer)</span>
+              <span class="tag">EpiPen/Asthma</span>
+              <span class="tag">Emergency O₂</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="fade-in">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="card-grid">
+
+          <!-- Project 1 -->
+          <div class="card project-card">
+            <div class="project-body">
+              <h3 class="card-title">InDesign Portfolio &amp; Graphic Projects</h3>
+              <p class="card-subtitle">Graphic Communication / Design Portfolio</p>
+              <p class="card-meta">Objective: Master non-destructive visual editing, vector graphics, and print document design.</p>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                A comprehensive portfolio detailing design progress across Adobe Photoshop, Illustrator, and InDesign. Features non-destructive color adjustments, vector drawing techniques with the Pen and Pathfinder tools, and postcard print formatting layout.
+              </p>
+              <div class="project-skills">
+                <span class="project-tag">Adobe Photoshop</span>
+                <span class="project-tag">Adobe Illustrator</span>
+                <span class="project-tag">Adobe InDesign</span>
+                <span class="project-tag">Print Formatting</span>
+              </div>
+            </div>
+            <a href="projects/indesign_portfolio_project.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="text-align: center; margin-top: 1rem;">View Project (PDF)</a>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="card project-card">
+            <div class="project-body">
+              <h3 class="card-title">Gameday Athletics Social Graphic</h3>
+              <p class="card-subtitle">Sports Marketing &amp; Visual Media</p>
+              <p class="card-meta">Objective: Create high-impact promotional graphics for athletic league events.</p>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Designed promotional gameday match graphics highlighting key players and fixture details to drive student body engagement and attendance for high school league soccer matches.
+              </p>
+              <div class="project-skills">
+                <span class="project-tag">Visual Design</span>
+                <span class="project-tag">Social Media Marketing</span>
+                <span class="project-tag">Sports Promotion</span>
+              </div>
+            </div>
+            <a href="projects/gameday_project.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="text-align: center; margin-top: 1rem;">View Project (PDF)</a>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="card project-card">
+            <div class="project-body">
+              <h3 class="card-title">Theme Games Promotional Asset</h3>
+              <p class="card-subtitle">Event Marketing &amp; Audience Engagement</p>
+              <p class="card-meta">Objective: Promote seasonal athletic theme games and drive digital ticket purchasing.</p>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Developed structured promotional materials communicating event dates, theme attire, and GoFan app ticketing information to increase fan participation across school events.
+              </p>
+              <div class="project-skills">
+                <span class="project-tag">Event Promotion</span>
+                <span class="project-tag">Graphic Design</span>
+                <span class="project-tag">Marketing Strategy</span>
+              </div>
+            </div>
+            <a href="projects/theme_games_project.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="text-align: center; margin-top: 1rem;">View Project (PDF)</a>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="card project-card">
+            <div class="project-body">
+              <h3 class="card-title">Alpha Kappa Psi Apparel &amp; Brand Graphic</h3>
+              <p class="card-subtitle">Brand Identity &amp; Merchandise Design (Team Project)</p>
+              <p class="card-meta">Objective: Produce cohesive branding and merchandise assets for fraternity pledge class.</p>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Collaborated on the visual design and production of custom apparel and digital branding for the Alpha Kappa Psi pledge class, establishing consistent visual themes across mediums.
+              </p>
+              <div class="project-skills">
+                <span class="project-tag">Brand Strategy</span>
+                <span class="project-tag">Apparel Design</span>
+                <span class="project-tag">Team Collaboration</span>
+              </div>
+            </div>
+            <a href="projects/akpsi_insta_project.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="text-align: center; margin-top: 1rem;">View Project (PDF)</a>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="card project-card">
+            <div class="project-body">
+              <h3 class="card-title">Graphic Communications Scholarship Poster</h3>
+              <p class="card-subtitle">Print Promotional Campaign</p>
+              <p class="card-meta">Objective: Promote scholarship eligibility for higher education graphic communications programs.</p>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Designed an informational promotional poster for the Print and Graphics Scholarship Foundation (PGSF) outlining application deadlines, eligibility criteria, and contact channels.
+              </p>
+              <div class="project-skills">
+                <span class="project-tag">Poster Design</span>
+                <span class="project-tag">Typography</span>
+                <span class="project-tag">Information Architecture</span>
+              </div>
+            </div>
+            <a href="projects/poster_project.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="text-align: center; margin-top: 1rem;">View Project (PDF)</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Résumé Section -->
+    <section id="resume" class="fade-in">
+      <div class="container" style="text-align: center;">
+        <h2 class="section-title">Résumé</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          View my complete academic, professional, and leadership experience in standard PDF format.
+        </p>
+        <a href="documents/resume_kayla_mawani.pdf" target="_blank" rel="noopener noreferrer" class="btn">View / Download Résumé (PDF)</a>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+      <div class="container contact-container">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="contact-text">
+          I am actively seeking internship opportunities in marketing, brand management, and product management. Feel free to reach out directly via email to discuss potential opportunities or view additional work samples.
+        </p>
+        <a href="mailto:kaylamawani@gmail.com" class="btn">Send Email</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="current-year">2026</span> Kayla Mawani. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Inline JavaScript -->
+  <script>
+    // Automatically update copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
